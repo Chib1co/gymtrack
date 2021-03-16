@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = function(app) {
   // Route for adding new gym classes
   app.post("/api/booking", (req, res) => {
-    db.user
+    db.classes
       .create({
         userId: req.user.id,
         classId: req.body.classId,
