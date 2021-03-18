@@ -36,9 +36,9 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
-
+require("./routes/classes-api-route.js")(app);
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
@@ -48,4 +48,4 @@ db.sequelize.sync({ force: true }).then(() => {
   });
 });
 
-console.log(db)
+console.log(db);

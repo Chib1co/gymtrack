@@ -52,9 +52,8 @@ $(document).ready(() => {
       email: email,
       password: password
     })
-      .then(() => {
-        // Upon successfully signed up, log in automatically and redirect to the member page
-        loginUser(email, password);
+      .done(() => {
+        window.location.replace("/profile");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
@@ -63,18 +62,5 @@ $(document).ready(() => {
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
-  }
-  function loginUser(email, password) {
-    $.post("/api/login", {
-      email: email,
-      password: password
-    })
-      .then(() => {
-        window.location.replace("/profile");
-        // If there's an error, log the error
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 });
