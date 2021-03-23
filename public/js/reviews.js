@@ -286,15 +286,13 @@ $(document).ready(() => {
     $("#instructor-modal-bg").css("display", "none");
   });
 
+  // Grabbing data from class review form to show on confirmation modal
   const confirmationModal = $("#confirmation-modal-bg");
   let classReview = {};
-
-  // Grabbing data from modal forms to make HTTP POST request
   $("#add-class-review").on("click", event => {
     event.preventDefault();
     $("#class-modal-bg").css("display", "none");
     $("#instructor-modal-bg").css("display", "none");
-    // Add confirmation "Are you sure you want to leave this review?" -> reload page and show new review
     const classId = $("#class-reviews-list")
       .val()
       .split("-")[1];
@@ -350,8 +348,8 @@ $(document).ready(() => {
     confirmationModal.css("display", "block");
   });
 
+  // Grabbing data from class review form to show on confirmation modal
   let instructorReview = {};
-
   $("#add-instructor-review").on("click", event => {
     event.preventDefault();
     $("#instructor-modal-bg").css("display", "none");
@@ -412,6 +410,7 @@ $(document).ready(() => {
     confirmationModal.css("display", "block");
   });
 
+  // Event for confirming review
   $("#confirm-review").on("click", () => {
     if ($(".confirmation-review h5").attr("id") === "confirm-class") {
       addClassReview(
@@ -438,6 +437,7 @@ $(document).ready(() => {
     }
   });
 
+  // Event for exiting out of adding review
   $("#go-back").on("click", () => {
     if ($(".confirmation-review h5").attr("id") === "confirm-class") {
       confirmationModal.css("display", "none");
@@ -452,6 +452,7 @@ $(document).ready(() => {
     }
   });
 
+  // 'Write a review' button
   $(".add-review").on("click", event => {
     $.ajax({
       url: "/api/user_data",
@@ -533,6 +534,7 @@ $(document).ready(() => {
       });
   });
 
+  // Request to add a class review
   function addClassReview(classId, reviewTitle, reviewText, rating, authorId) {
     $.post(
       "/api/add_class_review",
@@ -544,14 +546,13 @@ $(document).ready(() => {
         authorId: authorId
       },
       showSuccessMessage()
-    )
-      // If there's an error, log the error
-      .catch(err => {
-        console.log(err);
-        showErrorMessage();
-      });
+    ).catch(err => {
+      console.log(err);
+      showErrorMessage();
+    });
   }
 
+  // Request to add an instructor review
   function addInstructorReview(
     instructorId,
     reviewTitle,
@@ -577,6 +578,7 @@ $(document).ready(() => {
       });
   }
 
+  // Show 'add review' success message
   function showSuccessMessage() {
     $("#confirmation-modal-bg").css("display", "none");
     $("#success-modal-bg").css("display", "block");
@@ -587,6 +589,7 @@ $(document).ready(() => {
     window.location.replace("/reviews");
   });
 
+  // Show error when user does not include a value on all inputs
   function showInputErrorMessage() {
     confirmationModal.css("display", "none");
     $("#input-error-modal-bg").css("display", "block");
@@ -595,6 +598,7 @@ $(document).ready(() => {
   $("#input-error-ok-btn").on("click", () => {
     $("#input-error-modal-bg").css("display", "none");
   });
+
   // Filters
   // Per class
   $.get("/api/classlist").then(result => {
@@ -681,19 +685,19 @@ $(document).ready(() => {
       event.preventDefault();
       const classRating = $(ratingFilterClass).val();
       ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(score => {
-        $("[data-id= '" + score + "']")
+        $("[data-id-class= '" + score + "']")
           .parent()
           .parent()
           .fadeOut();
       });
-      $("[data-id ='" + classRating + "']")
+      $("[data-id-class ='" + classRating + "']")
         .parent()
         .parent()
         .fadeIn();
       if (ratingFilterClass.val() === "All") {
         ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(
           score => {
-            $("[data-id ='" + score + "']")
+            $("[data-id-class='" + score + "']")
               .parent()
               .parent()
               .fadeIn();
@@ -705,7 +709,7 @@ $(document).ready(() => {
       event.preventDefault();
       ratingFilterClass.val("All");
       ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(score => {
-        $("[data-id ='" + score + "']")
+        $("[data-id-class ='" + score + "']")
           .parent()
           .parent()
           .fadeIn();
@@ -801,14 +805,14 @@ $(document).ready(() => {
       event.preventDefault();
       const instructorRating = $(ratingFilterInstructor).val();
       ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(score => {
-        $("[data-id= '" + score + "']")
+        $("[data-id-instructor= '" + score + "']")
           .parent()
           .parent()
           .parent()
           .parent()
           .fadeOut();
       });
-      $("[data-id ='" + instructorRating + "']")
+      $("[data-id-instructor ='" + instructorRating + "']")
         .parent()
         .parent()
         .parent()
@@ -817,7 +821,7 @@ $(document).ready(() => {
       if (ratingFilterInstructor.val() === "All") {
         ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(
           score => {
-            $("[data-id ='" + score + "']")
+            $("[data-id-instructor ='" + score + "']")
               .parent()
               .parent()
               .parent()
@@ -831,7 +835,7 @@ $(document).ready(() => {
       event.preventDefault();
       ratingFilterInstructor.val("All");
       ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star"].forEach(score => {
-        $("[data-id ='" + score + "']")
+        $("[data-id-instructor ='" + score + "']")
           .parent()
           .parent()
           .parent()

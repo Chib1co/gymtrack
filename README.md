@@ -43,6 +43,7 @@ As budding web developers, we also approached this project with the objective to
 
 You can test various application functionalities by logging in through one of the seed accounts provided in the source code:
 1. Navigate to the the db/seeds.js file and use any one of the provided email and password credentials.
+*Note: There is a db/seeds.js file and a db/seeds.sql file. You will need to refer to the JavaScript file, not the SQL file.*
 2. To log in as an instructor, use the email and password of one of the three instructor accounts listed under the "Instructor seeds" comment.
 3. To log in as a member, use the email and password of any one of the four member accounts listed under the "Member seeds" comment. 
 4. Anyone who signs up for an account through the signup page is a member. In the meantime, instructor accounts must be created through the backend. 
@@ -56,7 +57,7 @@ You can test various application functionalities by logging in through one of th
 ## Screenshots 
 
 ### Homepage
-![Gymtrack web application homepage](public/images/readme/readme-homepage.png)
+![Gymtrack web application homepage](public/images/readme/readme-home.png)
 
 ### Classes 
 ![Gymtrack web application classes page](public/images/readme/readme-classes.png)
@@ -67,10 +68,10 @@ You can test various application functionalities by logging in through one of th
 ### Profile page 
 
 #### Member  
-![Gymtrack web application member profile page](public/images/readme/readme-profile-instructor.png)
+![Gymtrack web application instructor profile page](public/images/readme/readme-profile-member.png)
 
 #### Instructor 
-![Gymtrack web application instructor profile page](public/images/readme/readme-profile-member.png)
+![Gymtrack web application member profile page](public/images/readme/readme-profile-instructor.png)
 
 ## Contributers 
 

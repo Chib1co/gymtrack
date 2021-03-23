@@ -1,20 +1,11 @@
 <div class="align-items-center review-background-hero">
 <div class="container" id="review-body">
-    {{!-- <div class="row">
-        <div class="col-12">
-            <h1>Reviews</h1>
-        </div>
-    </div> --}}
     <div class="row">
         <div class="col-12">
             <div class="review-toggle">
                 <button id="class-toggle" class="toggle" type="submit">Classes</button>
                 <button id="instructor-toggle" class="toggle" type="submit">Instructors</button>
             </div>
-            {{!-- <form class="search">
-                <input id="review-search" name="review-search" type="text" placeholder="">
-                <button type="submit">Search</button>
-            </form> --}}
         </div>
     </div>
 </div>
@@ -65,32 +56,32 @@
                             <h6 class="class-review-title">{{title}}</h6>
                             <h6 class="review-rating">
                                 {{#if ratingOne}}
-                                <span class="rating-one" data-id="1 Star">
+                                <span class="rating-one" data-id-class="1 Star">
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingTwo}}
-                                <span class="rating-two" data-id="2 Stars">
+                                <span class="rating-two" data-id-class="2 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingThree}}
-                                <span class="rating-three" data-id="3 Stars">
+                                <span class="rating-three" data-id-class="3 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingFour}}
-                                <span class="rating-four" data-id="4 Stars">
+                                <span class="rating-four" data-id-class="4 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
-                                <span class="rating-five" data-id="5 Stars">
+                                <span class="rating-five" data-id-class="5 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -165,32 +156,32 @@
                             <h6 class="instructor-review-title">{{title}}</h6>
                             <h6 class="review-rating">
                                 {{#if ratingOne}}
-                                <span class="rating-one" data-id ="1 Star">
+                                <span class="rating-one" data-id-instructor ="1 Star">
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingTwo}}
-                                <span class="rating-two" data-id="2 Stars">
+                                <span class="rating-two" data-id-instructor ="2 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingThree}}
-                                <span class="rating-three" data-id="3 Stars">
+                                <span class="rating-three" data-id-instructor ="3 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
                                 {{#if ratingFour}}
-                                <span class="rating-four" data-id="4 Stars">
+                                <span class="rating-four" data-id-instructor="4 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </span>
                                 {{else}}
-                                <span class="rating-five" data-id="5 Stars">
+                                <span class="rating-five" data-id-instructor="5 Stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -297,7 +288,7 @@
 
 <!-- Modal for review confirmation -->
 <div id="confirmation-modal-bg" class="modal-bg">
-    <div class="add-review-modal">
+    <div id="confirm-review-x" class="add-review-modal">
         <div class="confirmation-review-div">
             <div class="confirmation-heading">
                 <i class="fas fa-question-circle fa-3x"></i>
